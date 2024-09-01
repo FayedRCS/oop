@@ -1,30 +1,56 @@
 class Calculator:
     def __init__(self):
-        pass
+        self.__result = 0
 
     def add(self, a):
-        pass
+        self.__a = a
+        self.__result += self.__a
 
     def subtract(self, a):
-        pass
+        self.__a = a
+        self.__result -= self.__a
 
     def multiply(self, a):
-        pass
+        self.__a = a
+        self.__result *= self.__a
 
     def divide(self, a):
-        pass
+        self.__a = a
+        if self.__a == 0:
+            raise ValueError("Cannot divide by zero")
+        
+        self.__result /= self.__a
 
     def modulo(self, a):
-        pass
+        self.__a = a
+
+        if self.__a == 0:
+            raise ValueError("Cannot divide by zero")
+        
+        while self.__result > 0:
+
+            self.__result -= self.__a
+            if self.__a > self.__result:
+                return self.__result
+        
+        return self.__result
+        
+        #^Proud note: I really did that by myself 
+        #sidenote, i realized later on I could've just done self.__result %= self.__a ... this is cuter though
 
     def power(self, a):
-        pass
+        self.__a = a
+        self.__result **= self.__a
+        return self.__result
 
     def square_root(self):
-        pass
+
+        self.__result = self.__result ** 0.5
 
     def clear(self):
-        pass
+        
+        self.__result = 0
 
     def get_result(self):
-        pass
+        return self.__result
+
