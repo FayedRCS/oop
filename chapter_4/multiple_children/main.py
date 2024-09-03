@@ -16,7 +16,23 @@ class Hero:
 class Archer(Hero):
     def __init__(self, name, health, num_arrows):
         super().__init__(name, health)
-        
+        self.__num_arrows = num_arrows
 
     def shoot(self, target):
-        pass
+        if self.__num_arrows <= 0:
+            raise Exception("not enough arrows")
+        self.__num_arrows -= 1
+        target.take_damage(10)
+
+
+class Wizard(Hero):
+    def __init__(self, name, health, mana):
+        super().__init__(name, health)
+        self.__mana = mana
+
+    def cast(self, target):
+        if self.__mana < 25:
+            raise Exception("not enough mana")
+        self.__mana -= 25
+        target.take_damage(25)
+        
