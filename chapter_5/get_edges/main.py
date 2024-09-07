@@ -6,16 +6,24 @@ class Rectangle:
         self.__y2 = y2
 
     def get_left_x(self):
-        pass
+
+        x1 = min(self.__x1, self.__x2)
+        return x1
 
     def get_right_x(self):
-        pass
+
+        x2 = max(self.__x1, self.__x2)
+        return x2 
 
     def get_top_y(self):
-        pass
 
+        y2 = max(self.__y1, self.__y2)
+        return y2
+    
     def get_bottom_y(self):
-        pass
+
+        y1 = min(self.__y1, self.__y2)
+        return y1
 
     # don't touch below this line
 
