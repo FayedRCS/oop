@@ -1,10 +1,12 @@
 class Item():
 
     pay_rate = 0.8 #price after discount is applied
+    all = []    
 
     def __init__(self, name: str, price: float, quantity=0):
 
         #running validations on recieved arguments
+        assert price >= 0, f"quantity {price} CANNOT be lower than zezo"
         assert quantity >= 0, f"quantity {quantity} CANNOT be lower than zezo"
 
 
@@ -13,14 +15,22 @@ class Item():
         self.price = price
         self.quantity = quantity
 
+        #actions to execute
+        Item.all.append(self)
+
     def calculate_net(self):
         return self.price * self.quantity
     
     def apply_discount(self):
-        self.price = self.price * Item.pay_rate
+        self.price = self.price * self.pay_rate
 
-item1 = Item("Hey", 1000, 2)
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
 
-item1.apply_discount()
+item1 = Item("Phone", 100, 1)
+item2 = Item("Laptop", 1000, 3)
+item3 = Item("Cable", 10, 5)
+item4 = Item("Mouse", 50, 5)
+item5 = Item("Keyboard", 75, 5)
 
-print(item1.price)
+print(Item.all)
